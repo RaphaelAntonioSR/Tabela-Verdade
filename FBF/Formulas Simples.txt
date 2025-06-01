@@ -1,0 +1,6 @@
+P ^ Q
+P v Q
+~P
+P -> Q
+P <-> Q
+P x Q

@@ -1,0 +1,6 @@
+(P ^ Q) v R
+P ^ (Q v R)
+~(P ^ Q)
+(P -> Q) ^ (Q -> R)
+P <-> (Q <-> R)
+(P v Q) ^ (~P v ~Q)

@@ -1,11 +1,32 @@
 from Model.logical_operations import LogicalOperations
 
 class FormulaHandler:
+    """
+    Classe responsável por manipular fórmulas lógicas, incluindo a extração
+    de subfórmulas e conversão de nós para representação em string.
+    """
+    
     def __init__(self, parser):
+        """
+        Inicializa o manipulador de fórmulas.
+        
+        Args:
+            parser (Parser): O parser utilizado para analisar expressões
+        """
         self.parser = parser
         self.op_symbols = parser.op_symbols
 
     def get_subformulas(self, node, subformulas=None):
+        """
+        Obtém todas as subfórmulas de uma expressão lógica.
+        
+        Args:
+            node (tuple ou str): Nó da árvore de análise representando a expressão
+            subformulas (set, opcional): Conjunto para armazenar subfórmulas encontradas
+            
+        Returns:
+            set: Conjunto de tuplas (string_da_subfórmula, nó_da_subfórmula)
+        """
         if subformulas is None:
             subformulas = set()
         
@@ -44,6 +65,18 @@ class FormulaHandler:
         return subformulas
 
     def node_to_string(self, node):
+        """
+        Converte um nó da árvore de análise em uma representação de string.
+        
+        Args:
+            node (tuple ou str): Nó da árvore de análise
+            
+        Returns:
+            str: Representação em string do nó
+            
+        Raises:
+            ValueError: Se o tipo de nó for desconhecido
+        """
         if isinstance(node, str):
             return node
         elif isinstance(node, tuple):

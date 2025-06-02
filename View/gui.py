@@ -9,11 +9,24 @@ from Controller.file_handler import FileHandler
 from Model.logical_operations import LogicalOperations
 
 class TruthTableGUI:
+    """
+    Classe responsável pela interface gráfica do usuário para a calculadora de tabela verdade.
+    Permite a entrada de expressões lógicas, carregamento de fórmulas de arquivos e
+    visualização de tabelas verdade com classificação de fórmulas.
+    """
+    
     def __init__(self):
+        """
+        Inicializa a interface gráfica.
+        """
         self.selected_fbf = None
         self.expr_processor = ExpressionProcessor()
         
     def show_input_window(self):
+        """
+        Exibe a janela principal de entrada de dados.
+        Permite ao usuário digitar uma expressão lógica ou carregar de um arquivo.
+        """
         root = tk.Tk()
         root.title("Entrada de dados")
         root.configure(bg="#f0f0f0")
@@ -172,6 +185,13 @@ class TruthTableGUI:
         root.mainloop()
 
     def add_operator_menu(self, parent_frame, entry_widget):
+        """
+        Adiciona um menu de botões de operadores lógicos à interface.
+        
+        Args:
+            parent_frame (tk.Frame): Frame pai onde o menu será adicionado
+            entry_widget (tk.Entry): Widget de entrada onde os operadores serão inseridos
+        """
         # Frame para os botões de operadores
         op_buttons_frame = tk.Frame(parent_frame, bg="#f0f0f0")
         op_buttons_frame.pack(fill="x", pady=10)
@@ -236,6 +256,17 @@ class TruthTableGUI:
             create_tooltip(button, desc)
 
     def show_fbf_selection(self, fbfs, file_name, parent_window):
+        """
+        Exibe uma janela para seleção de uma FBF de uma lista.
+        
+        Args:
+            fbfs (list): Lista de FBFs disponíveis para seleção
+            file_name (str): Nome do arquivo de onde as FBFs foram carregadas
+            parent_window (tk.Tk): Janela pai
+            
+        Returns:
+            str: A FBF selecionada ou None se nenhuma foi selecionada
+        """
         # Variável para armazenar a FBF selecionada
         selected_fbf = [None]  # Usar lista para poder modificar dentro das funções aninhadas
         
@@ -308,6 +339,16 @@ class TruthTableGUI:
         return selected_fbf[0]
 
     def show_truth_table(self, expression, variables, table, classification, formula_handler):
+        """
+        Exibe a tabela verdade para uma expressão lógica.
+        
+        Args:
+            expression (tuple): Expressão lógica analisada
+            variables (list): Lista de variáveis na expressão
+            table (pandas.DataFrame): Tabela verdade gerada
+            classification (str): Classificação da fórmula
+            formula_handler (FormulaHandler): Manipulador de fórmulas para conversão de nós para string
+        """
         root = tk.Tk()
         root.title("Tabela Verdade")
         root.configure(bg="#f5f5f5")

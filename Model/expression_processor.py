@@ -1,8 +1,22 @@
 import re
 
 class ExpressionProcessor:
+    """
+    Classe responsável pelo processamento de expressões lógicas.
+    Fornece métodos para extrair variáveis e tokenizar expressões.
+    """
+    
     @staticmethod
     def extract_variables(expression):
+        """
+        Extrai as variáveis de uma expressão lógica.
+        
+        Args:
+            expression (str): A expressão lógica a ser analisada
+            
+        Returns:
+            list: Lista ordenada de variáveis únicas encontradas na expressão
+        """
         # Encontra todas as letras na expressão
         all_chars = re.findall(r'[a-zA-Z]+', expression)
         # Filtra operadores conhecidos
@@ -13,6 +27,18 @@ class ExpressionProcessor:
 
     @staticmethod
     def tokenize(expression):
+        """
+        Converte uma expressão lógica em uma lista de tokens.
+        
+        Args:
+            expression (str): A expressão lógica a ser tokenizada
+            
+        Returns:
+            list: Lista de tokens da expressão
+            
+        Raises:
+            ValueError: Se a expressão contiver caracteres inválidos
+        """
         tokens = []
         i = 0
         while i < len(expression):

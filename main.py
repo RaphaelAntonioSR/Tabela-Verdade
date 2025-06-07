@@ -1,4 +1,4 @@
-from gui import TruthTableGUI
+from View.gui import TruthTableGUI
 
 if __name__ == "__main__":
     """
